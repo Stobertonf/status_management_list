@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:status_management_list/my_app.dart';
+import 'package:status_management_list/app/pages/home_page.dart';
+import 'package:status_management_list/main_app.dart';
+
+void main() {
+  runApp(const MainApp());
+}
 
 /*
 Future<void> main() async {
