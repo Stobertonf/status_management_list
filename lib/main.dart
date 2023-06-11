@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:status_management_list/app/pages/home_page.dart';
+import 'package:status_management_list/app/pages/home/home_page.dart';
 import 'package:status_management_list/main_app.dart';
 
 void main() {
