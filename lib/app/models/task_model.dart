@@ -1,31 +1,35 @@
 class TaskModel {
-  String descricao = "";
-  bool concluido = false;
-  DateTime dataCriacao = DateTime.now();
-  DateTime dataAlteracao = DateTime.now();
-  String userId = "";
+  String idTask;
+  String title;
+  String description;
+  String userId;
+  String categoryId;
 
   TaskModel({
-    required this.descricao,
-    required this.concluido,
+    required this.idTask,
+    required this.title,
+    required this.description,
     required this.userId,
+    required this.categoryId,
   });
 
-  TaskModel.fromJson(Map<String, dynamic> json) {
-    descricao = json['descricao'];
-    concluido = json['concluido'];
-    dataCriacao = DateTime.parse(json['data_criacao']);
-    dataAlteracao = DateTime.parse(json['data_alteracao']);
-    userId = json['user_id'];
+  factory TaskModel.fromJson(Map<String, dynamic> json) {
+    return TaskModel(
+      idTask: json['IDTask'],
+      title: json['Title'],
+      description: json['Description'],
+      userId: json['UserID'],
+      categoryId: json['CategoryID'],
+    );
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['descricao'] = descricao;
-    data['concluido'] = concluido;
-    data['data_criacao'] = dataCriacao.toIso8601String();
-    data['data_alteracao'] = dataAlteracao.toIso8601String();
-    data['user_id'] = userId;
-    return data;
+    return {
+      'IDTask': idTask,
+      'Title': title,
+      'Description': description,
+      'UserID': userId,
+      'CategoryID': categoryId,
+    };
   }
 }
