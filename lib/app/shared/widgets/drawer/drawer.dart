@@ -3,6 +3,7 @@ import 'package:status_management_list/app/pages/home/home_page.dart';
 import 'package:status_management_list/app/pages/tasks/task_page.dart';
 import 'package:status_management_list/app/pages/users/user_page.dart';
 import 'package:status_management_list/app/pages/categories/categories_page.dart';
+import 'package:status_management_list/app/shared/widgets/modals/bugs_modal.dart';
 
 class CustonDrawer extends StatelessWidget {
   const CustonDrawer({Key? key}) : super(key: key);
@@ -40,11 +41,9 @@ class CustonDrawer extends StatelessWidget {
                 "Bugs",
               ),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => const HomePage(),
-                  ),
+                showDialog(
+                  context: context,
+                  builder: (_) => const BugsModal(),
                 );
               },
             ),
