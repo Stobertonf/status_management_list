@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:status_management_list/app/models/task_model.dart';
 import 'package:status_management_list/app/pages/tasks/task_page.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_getx_widget.dart';
-import 'package:status_management_list/app/controllers/tasks_controller.dart';
+import 'package:status_management_list/app/controllers/tasks/tasks_controller.dart';
 import 'package:status_management_list/app/shared/widgets/drawer/drawer.dart';
 
 class HomePage extends StatelessWidget {

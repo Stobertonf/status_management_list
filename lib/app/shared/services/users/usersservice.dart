@@ -1,13 +1,13 @@
-import 'package:status_management_list/app/models/task_model.dart';
+import 'package:status_management_list/app/models/user_model.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
-class TaskService {
-  Future<List<TaskModel>> fetchTasks() async {
-    List<TaskModel> tasks = [];
+class UsersService {
+  Future<List<UsersModel>> fetchUsers() async {
+    List<UsersModel> users = [];
 
     await Parse().initialize(
-      'PpUlIq6MlXGx7dCh2kuiodTkVZYhbny7Qr3YOdKY',
-      '8jVSlnLmBKSlqsvLird8yGQPq3BRiM1ujRnyISKQ',
+      '12345678910SDFASDADS',
+      'ASDADSDA12365478910SDFASD',
       autoSendSessionId: true,
       debug: true,
       coreStore: await CoreStoreSharedPrefsImp.getInstance(),
@@ -15,7 +15,7 @@ class TaskService {
 
     final queryBuilder = QueryBuilder<ParseObject>(
       ParseObject(
-        'Task',
+        'User',
       ),
     );
 
@@ -23,33 +23,33 @@ class TaskService {
       final response = await queryBuilder.query();
 
       if (response.success && response.results != null) {
-        for (final taskObject in response.results!) {
-          final task = TaskModel.fromJson(taskObject.toJson());
-          tasks.add(task);
+        for (final userObject in response.results!) {
+          final user = UsersModel.fromJson(userObject.toJson());
+          users.add(user);
         }
       }
     } catch (e) {
       print('Erro ao buscar as tarefas: $e');
     }
 
-    return tasks;
+    return users;
   }
 
-  Future<bool> saveTask(TaskModel task) async {
+  Future<bool> saveUser(UsersModel user) async {
     try {
       await Parse().initialize(
-        'PpUlIq6MlXGx7dCh2kuiodTkVZYhbny7Qr3YOdKY',
-        '8jVSlnLmBKSlqsvLird8yGQPq3BRiM1ujRnyISKQ',
+        '12345678910SDFASDADS',
+        'ASDADSDA12365478910SDFASD',
         autoSendSessionId: true,
         debug: true,
         coreStore: await CoreStoreSharedPrefsImp.getInstance(),
       );
 
-      final taskObject = ParseObject('Task')
-        ..set('Title', task.title)
-        ..set('Description', task.description)
-        ..set('UserID', task.userId)
-        ..set('CategoryID', task.categoryId);
+      final taskObject = ParseObject('User')
+        ..set('Name', user.name)
+        ..set('Profession', user.profession)
+        ..set('Email', user.email)
+        ..set('Birth', user.birth);
 
       final response = await taskObject.save();
 

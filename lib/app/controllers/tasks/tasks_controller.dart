@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:status_management_list/app/models/task_model.dart';
-import 'package:status_management_list/app/shared/services/taskservice%20.dart';
+import 'package:status_management_list/app/shared/services/tasks/taskservice.dart';
 
 class TaskController extends GetxController {
   RxBool isLoading = false.obs;

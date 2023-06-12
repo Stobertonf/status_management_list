@@ -1,45 +1,58 @@
 import 'package:flutter/material.dart';
-import 'package:status_management_list/app/controllers/tasks/tasks_controller.dart';
 import 'package:status_management_list/app/shared/widgets/drawer/drawer.dart';
+import 'package:status_management_list/app/controllers/users/users_controller.dart';
 
-class TasksPage extends StatefulWidget {
-  const TasksPage({super.key});
+class UserPage extends StatefulWidget {
+  const UserPage({super.key});
 
   @override
-  State<TasksPage> createState() => _TasksPageState();
+  State<UserPage> createState() => _UserPageState();
 }
 
-class _TasksPageState extends State<TasksPage> {
+class _UserPageState extends State<UserPage> {
   @override
   final _formKey = GlobalKey<FormState>();
-  late final TaskController _taskController;
-  final _titleController = TextEditingController();
-  final _descriptionController = TextEditingController();
+  late final UsersController _userController;
+  final _nameController = TextEditingController();
+  final _professionController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _birthController = TextEditingController();
 
   @override
   void dispose() {
-    _titleController.dispose();
-    _descriptionController.dispose();
+    _nameController.dispose();
+    _professionController.dispose();
+    _emailController.dispose();
+    _birthController.dispose();
     super.dispose();
   }
 
   @override
   void initState() {
     super.initState();
-    _taskController = TaskController();
+    _userController = UsersController();
   }
 
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
-      String title = _titleController.text;
-      String description = _descriptionController.text;
+      String name = _nameController.text;
+      String profession = _professionController.text;
+      String email = _emailController.text;
+      String birth = _birthController.text;
 
-      _taskController.addTask(title, description);
-      _taskController.update();
+      _userController.addUser(
+        name,
+        profession,
+        email,
+        birth,
+      );
+      _userController.update();
 
       // Limpar campos de texto
-      _titleController.clear();
-      _descriptionController.clear();
+      _nameController.clear();
+      _professionController.clear();
+      _emailController.clear();
+      _birthController.clear();
     }
   }
 
@@ -48,7 +61,7 @@ class _TasksPageState extends State<TasksPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Creating Tasks',
+          'Creating User',
         ),
         centerTitle: true,
         backgroundColor: Colors.black,
@@ -68,7 +81,7 @@ class _TasksPageState extends State<TasksPage> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   TextFormField(
-                    controller: _titleController,
+                    controller: _nameController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(
@@ -97,7 +110,7 @@ class _TasksPageState extends State<TasksPage> {
                           color: Colors.black,
                         ),
                       ),
-                      labelText: 'Title',
+                      labelText: 'Name',
                       labelStyle: const TextStyle(
                         fontSize: 16,
                         fontFamily: 'Poppins',
@@ -106,7 +119,7 @@ class _TasksPageState extends State<TasksPage> {
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Please enter a title.';
+                        return 'Please enter a name.';
                       }
                       return null;
                     },
@@ -115,7 +128,7 @@ class _TasksPageState extends State<TasksPage> {
                     height: 16.0,
                   ),
                   TextFormField(
-                    controller: _descriptionController,
+                    controller: _professionController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(
@@ -144,7 +157,7 @@ class _TasksPageState extends State<TasksPage> {
                           color: Colors.black,
                         ),
                       ),
-                      labelText: 'Description',
+                      labelText: 'Profession',
                       labelStyle: const TextStyle(
                         fontSize: 16,
                         fontFamily: 'Poppins',
@@ -153,7 +166,7 @@ class _TasksPageState extends State<TasksPage> {
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Please enter a description.';
+                        return 'Please enter a profession.';
                       }
                       return null;
                     },
@@ -162,7 +175,7 @@ class _TasksPageState extends State<TasksPage> {
                     height: 16.0,
                   ),
                   TextFormField(
-                    controller: _descriptionController,
+                    controller: _emailController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(
@@ -191,7 +204,7 @@ class _TasksPageState extends State<TasksPage> {
                           color: Colors.black,
                         ),
                       ),
-                      labelText: 'User',
+                      labelText: 'Email',
                       labelStyle: const TextStyle(
                         fontSize: 16,
                         fontFamily: 'Poppins',
@@ -200,7 +213,7 @@ class _TasksPageState extends State<TasksPage> {
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Please enter a user.';
+                        return 'Please enter a email.';
                       }
                       return null;
                     },
@@ -209,7 +222,7 @@ class _TasksPageState extends State<TasksPage> {
                     height: 16.0,
                   ),
                   TextFormField(
-                    controller: _descriptionController,
+                    controller: _birthController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(
@@ -238,7 +251,7 @@ class _TasksPageState extends State<TasksPage> {
                           color: Colors.black,
                         ),
                       ),
-                      labelText: 'Category',
+                      labelText: 'Birth',
                       labelStyle: const TextStyle(
                         fontSize: 16,
                         fontFamily: 'Poppins',
@@ -247,7 +260,7 @@ class _TasksPageState extends State<TasksPage> {
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Please enter a category.';
+                        return 'Please enter a birth.';
                       }
                       return null;
                     },
