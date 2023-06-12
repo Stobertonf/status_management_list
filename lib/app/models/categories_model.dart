@@ -1,22 +1,22 @@
 class CategoriesModel {
-  String idCategorie;
+  String idCategorieTask;
   String categoryDescription;
 
   CategoriesModel({
-    required this.idCategorie,
+    required this.idCategorieTask,
     required this.categoryDescription,
   });
 
   factory CategoriesModel.fromJson(Map<String, dynamic> json) {
     return CategoriesModel(
-      idCategorie: json['idCategorie'],
+      idCategorieTask: json['idCategorieTask'],
       categoryDescription: json['categoryDescription'],
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'idCategorie': idCategorie,
+      'idCategorie': idCategorieTask,
       'categoryDescription': categoryDescription,
     };
   }
