@@ -1,163 +1,64 @@
-import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:status_management_list/app/models/task_model.dart';
+import 'package:status_management_list/app/pages/tasks/task_page.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_getx_widget.dart';
+import 'package:status_management_list/app/controllers/tasks_controller.dart';
+import 'package:status_management_list/app/shared/widgets/drawer/drawer.dart';
 
-// ignore: must_be_immutable
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  final _formKey = GlobalKey<FormState>();
-
-  var descricaoContoller = TextEditingController();
-
-  final _titleController = TextEditingController();
-
-  final _descriptionController = TextEditingController();
-
-  @override
-  void dispose() {
-    _titleController.dispose();
-    _descriptionController.dispose();
-    super.dispose();
-  }
-
-  void _submitForm() {
-    if (_formKey.currentState!.validate()) {
-      String title = _titleController.text;
-      String description = _descriptionController.text;
-    }
-  }
-
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Todo List',
-        ),
+        title: const Text('Tasks'),
         centerTitle: true,
         backgroundColor: Colors.black,
       ),
+      drawer: const CustonDrawer(),
       body: Padding(
-        padding: const EdgeInsets.all(
-          16.0,
-        ),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              TextFormField(
-                controller: _titleController,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(
-                      16.0,
-                    ),
-                    borderSide: const BorderSide(
-                      width: 0.5,
-                      color: Colors.white,
-                    ),
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const TasksPage(),
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(
-                      16.0,
-                    ),
-                    borderSide: const BorderSide(
-                      width: 0.5,
-                      color: Colors.black,
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(
-                      16.0,
-                    ),
-                    borderSide: const BorderSide(
-                      width: 0.5,
-                      color: Colors.black,
-                    ),
-                  ),
-                  labelText: 'Title',
-                  labelStyle: const TextStyle(
-                    fontSize: 16,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter a title.';
+                );
+              },
+              child: const Text(
+                'Criar Tarefa',
+              ),
+            ),
+            const SizedBox(
+              height: 16.0,
+            ),
+            Expanded(
+              child: GetX<TaskController>(
+                builder: (controller) {
+                  if (controller.isLoading.value) {
+                    return const CircularProgressIndicator();
+                  } else if (controller.tasks.isEmpty) {
+                    return const Text('No tasks found.');
+                  } else {
+                    return ListView.builder(
+                      itemCount: controller.tasks.length,
+                      itemBuilder: (context, index) {
+                        TaskModel task = controller.tasks[index];
+                        return ListTile(
+                          title: Text(task.title),
+                        );
+                      },
+                    );
                   }
-                  return null;
                 },
               ),
-              const SizedBox(
-                height: 16.0,
-              ),
-              TextFormField(
-                controller: _descriptionController,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(
-                      16.0,
-                    ),
-                    borderSide: const BorderSide(
-                      width: 0.5,
-                      color: Colors.white,
-                    ),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(
-                      16.0,
-                    ),
-                    borderSide: const BorderSide(
-                      width: 0.5,
-                      color: Colors.black,
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(
-                      16.0,
-                    ),
-                    borderSide: const BorderSide(
-                      width: 0.5,
-                      color: Colors.black,
-                    ),
-                  ),
-                  labelText: 'Description',
-                  labelStyle: const TextStyle(
-                    fontSize: 16,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter a description.';
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(
-                height: 16.0,
-              ),
-              ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                    Colors.black,
-                  ),
-                ),
-                onPressed: _submitForm,
-                child: const Text(
-                  'Save',
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
