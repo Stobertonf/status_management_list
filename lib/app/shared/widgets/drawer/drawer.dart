@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:status_management_list/app/pages/home/home_page.dart';
 import 'package:status_management_list/app/pages/tasks/task_page.dart';
+import 'package:status_management_list/app/pages/users/user_page.dart';
+import 'package:status_management_list/app/pages/categories/categories_page.dart';
 
 class CustonDrawer extends StatelessWidget {
   const CustonDrawer({Key? key}) : super(key: key);
@@ -57,7 +59,7 @@ class CustonDrawer extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (_) => const HomePage(),
+                    builder: (_) => const CategoriesPage(),
                   ),
                 );
               },
@@ -89,7 +91,7 @@ class CustonDrawer extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (_) => const HomePage(),
+                    builder: (_) => const UserPage(),
                   ),
                 );
               },
