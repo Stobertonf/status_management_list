@@ -12,6 +12,8 @@
 
 📚 Neste projeto, eu vou ter a oportunidade de criar um app de Lista de Tarefas, utilizando algum gerenciador de estado que ainda não decidi. As tarefas devem ser apresentadas de forma reativa e devemos obter os dados da base de dados. O banco de dados será o Back4App, que eu tive a oportunidade de aprender (primeiro contato) na carreira Flutter Specialist da dio.me.
 
+No decorrer do projeto, acabei optando por usar o Get, pois como não possuo muita experiência e conheicimento com este Gerenciador de estado, estou aproveitando a oportunidade para a adquirir mais conhecimento.
+
 ## Foco
 
 😊 O curso é focado em desenvolver um App que crie e liste as tarefas conforme expliquei no escopo.
