@@ -53,128 +53,221 @@ class _TasksPageState extends State<TasksPage> {
         centerTitle: true,
         backgroundColor: Colors.black,
       ),
-      drawer: CustonDrawer(),
-      body: Align(
-        alignment: Alignment.center,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 16.0,
-            vertical: 40.0,
-          ),
-          /*  padding: const EdgeInsets.all(
-            16.0,
-          ),*/
-          child: Form(
-            key: _formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                TextFormField(
-                  controller: _titleController,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                        16.0,
+      drawer: const CustonDrawer(),
+      body: SingleChildScrollView(
+        child: Align(
+          alignment: Alignment.center,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16.0,
+              vertical: 40.0,
+            ),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  TextFormField(
+                    controller: _titleController,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          16.0,
+                        ),
+                        borderSide: const BorderSide(
+                          width: 0.5,
+                          color: Colors.white,
+                        ),
                       ),
-                      borderSide: const BorderSide(
-                        width: 0.5,
-                        color: Colors.white,
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          16.0,
+                        ),
+                        borderSide: const BorderSide(
+                          width: 0.5,
+                          color: Colors.black,
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          16.0,
+                        ),
+                        borderSide: const BorderSide(
+                          width: 0.5,
+                          color: Colors.black,
+                        ),
+                      ),
+                      labelText: 'Title',
+                      labelStyle: const TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w400,
                       ),
                     ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                        16.0,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter a title.';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(
+                    height: 16.0,
+                  ),
+                  TextFormField(
+                    controller: _descriptionController,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          16.0,
+                        ),
+                        borderSide: const BorderSide(
+                          width: 0.5,
+                          color: Colors.white,
+                        ),
                       ),
-                      borderSide: const BorderSide(
-                        width: 0.5,
-                        color: Colors.black,
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          16.0,
+                        ),
+                        borderSide: const BorderSide(
+                          width: 0.5,
+                          color: Colors.black,
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          16.0,
+                        ),
+                        borderSide: const BorderSide(
+                          width: 0.5,
+                          color: Colors.black,
+                        ),
+                      ),
+                      labelText: 'Description',
+                      labelStyle: const TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w400,
                       ),
                     ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                        16.0,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter a description.';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(
+                    height: 16.0,
+                  ),
+                  TextFormField(
+                    controller: _descriptionController,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          16.0,
+                        ),
+                        borderSide: const BorderSide(
+                          width: 0.5,
+                          color: Colors.white,
+                        ),
                       ),
-                      borderSide: const BorderSide(
-                        width: 0.5,
-                        color: Colors.black,
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          16.0,
+                        ),
+                        borderSide: const BorderSide(
+                          width: 0.5,
+                          color: Colors.black,
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          16.0,
+                        ),
+                        borderSide: const BorderSide(
+                          width: 0.5,
+                          color: Colors.black,
+                        ),
+                      ),
+                      labelText: 'User',
+                      labelStyle: const TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w400,
                       ),
                     ),
-                    labelText: 'Title',
-                    labelStyle: const TextStyle(
-                      fontSize: 16,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w400,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter a user.';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(
+                    height: 16.0,
+                  ),
+                  TextFormField(
+                    controller: _descriptionController,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          16.0,
+                        ),
+                        borderSide: const BorderSide(
+                          width: 0.5,
+                          color: Colors.white,
+                        ),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          16.0,
+                        ),
+                        borderSide: const BorderSide(
+                          width: 0.5,
+                          color: Colors.black,
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          16.0,
+                        ),
+                        borderSide: const BorderSide(
+                          width: 0.5,
+                          color: Colors.black,
+                        ),
+                      ),
+                      labelText: 'Category',
+                      labelStyle: const TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter a category.';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(
+                    height: 16.0,
+                  ),
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                        Colors.black,
+                      ),
+                    ),
+                    onPressed: _submitForm,
+                    child: const Text(
+                      'Save',
                     ),
                   ),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Please enter a title.';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(
-                  height: 16.0,
-                ),
-                TextFormField(
-                  controller: _descriptionController,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                        16.0,
-                      ),
-                      borderSide: const BorderSide(
-                        width: 0.5,
-                        color: Colors.white,
-                      ),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                        16.0,
-                      ),
-                      borderSide: const BorderSide(
-                        width: 0.5,
-                        color: Colors.black,
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                        16.0,
-                      ),
-                      borderSide: const BorderSide(
-                        width: 0.5,
-                        color: Colors.black,
-                      ),
-                    ),
-                    labelText: 'Description',
-                    labelStyle: const TextStyle(
-                      fontSize: 16,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Please enter a description.';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(
-                  height: 16.0,
-                ),
-                ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(
-                      Colors.black,
-                    ),
-                  ),
-                  onPressed: _submitForm,
-                  child: const Text(
-                    'Save',
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
