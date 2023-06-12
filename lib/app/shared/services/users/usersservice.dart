@@ -29,7 +29,7 @@ class UsersService {
         }
       }
     } catch (e) {
-      print('Erro ao buscar as tarefas: $e');
+      print('Erro ao buscar os usuários: $e');
     }
 
     return users;
@@ -45,17 +45,17 @@ class UsersService {
         coreStore: await CoreStoreSharedPrefsImp.getInstance(),
       );
 
-      final taskObject = ParseObject('User')
+      final usersObject = ParseObject('User')
         ..set('Name', user.name)
         ..set('Profession', user.profession)
         ..set('Email', user.email)
         ..set('Birth', user.birth);
 
-      final response = await taskObject.save();
+      final response = await usersObject.save();
 
       return response.success;
     } catch (e) {
-      print('Erro ao salvar a tarefa: $e');
+      print('Erro ao salvar o usuário: $e');
       return false;
     }
   }
