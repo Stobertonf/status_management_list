@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:status_management_list/app/pages/home/home_page.dart';
+import 'package:status_management_list/app/pages/tasks/task_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -11,8 +12,8 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
-  AnimationController? _animationController;
   Animation<double>? _animation;
+  AnimationController? _animationController;
 
   @override
   void initState() {
@@ -27,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen>
         Tween<double>(begin: 0.0, end: 1.0).animate(_animationController!);
     _animationController!.forward().whenComplete(() {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => const HomePage()),
+        MaterialPageRoute(builder: (_) => const TasksPage()),
       );
     });
   }
@@ -66,11 +67,17 @@ class _SplashScreenState extends State<SplashScreen>
               width: 200.0,
               height: 10.0,
               decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(5.0),
+                color: Colors.black.withOpacity(
+                  0.2,
+                ),
+                borderRadius: BorderRadius.circular(
+                  5.0,
+                ),
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(5.0),
+                borderRadius: BorderRadius.circular(
+                  5.0,
+                ),
                 child: AnimatedBuilder(
                   animation: _animation!,
                   builder: (BuildContext context, Widget? child) {
@@ -78,8 +85,8 @@ class _SplashScreenState extends State<SplashScreen>
                     return Stack(
                       children: [
                         Container(
-                          width: _animation!.value * 200.0,
                           height: 10.0,
+                          width: _animation!.value * 200.0,
                           decoration: BoxDecoration(
                             color: Colors.yellow,
                             borderRadius: BorderRadius.circular(
@@ -108,7 +115,9 @@ class _SplashScreenState extends State<SplashScreen>
                 ),
               ),
             ),
-            const SizedBox(height: 16.0),
+            const SizedBox(
+              height: 16.0,
+            ),
             const Text(
               'Carregando...',
               style: TextStyle(
