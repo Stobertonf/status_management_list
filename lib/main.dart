@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:status_management_list/app/pages/home/home_page.dart';
 import 'package:status_management_list/main_app.dart';
-
-void main() {
-  runApp(const MainApp());
-}
-
-/*
+import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 Future<void> main() async {
-  runApp(const MyApp());
+  runApp(const MainApp());
 
   //Adicione a sua keyApplicationId / keyClientKey do back4App
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,4 +12,4 @@ Future<void> main() async {
 
   await Parse().initialize(keyApplicationId, keyParseServerUrl,
       clientKey: keyClientKey, autoSendSessionId: true);
-}*/
+}
