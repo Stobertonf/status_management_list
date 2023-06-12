@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:status_management_list/app/controllers/tasks_controller.dart';
+import 'package:status_management_list/app/controllers/tasks/tasks_controller.dart';
 import 'package:status_management_list/app/shared/widgets/drawer/drawer.dart';
 
 class TasksPage extends StatefulWidget {

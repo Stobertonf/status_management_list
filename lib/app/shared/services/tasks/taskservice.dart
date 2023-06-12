@@ -6,8 +6,8 @@ class TaskService {
     List<TaskModel> tasks = [];
 
     await Parse().initialize(
-      'PpUlIq6MlXGx7dCh2kuiodTkVZYhbny7Qr3YOdKY',
-      '8jVSlnLmBKSlqsvLird8yGQPq3BRiM1ujRnyISKQ',
+      '12345678910SDFASDADS',
+      'ASDADSDA12365478910SDFASD',
       autoSendSessionId: true,
       debug: true,
       coreStore: await CoreStoreSharedPrefsImp.getInstance(),
@@ -38,8 +38,8 @@ class TaskService {
   Future<bool> saveTask(TaskModel task) async {
     try {
       await Parse().initialize(
-        'PpUlIq6MlXGx7dCh2kuiodTkVZYhbny7Qr3YOdKY',
-        '8jVSlnLmBKSlqsvLird8yGQPq3BRiM1ujRnyISKQ',
+        '12345678910SDFASDADS',
+        'ASDADSDA12365478910SDFASD',
         autoSendSessionId: true,
         debug: true,
         coreStore: await CoreStoreSharedPrefsImp.getInstance(),
