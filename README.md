@@ -22,6 +22,10 @@ No decorrer do projeto, acabei optando por usar o Get, pois como não possuo mui
 
 ⚡ Este projeto foi iniciado no dia 11/06/2023.
 
+## Observação
+
+Por motivos pessoais, eu tive que excluir hoje (12-06-2023) o banco de dados do back4App. Mas em breve irei criar novamente.
+
 ## Imagens
 
 Neste momento, estou disponibilizando somente a imagem da modelagem do banco de dado. Para fazer a mesma, eu utilizei o MySQL Workbench.
