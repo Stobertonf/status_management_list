@@ -1,9 +1,9 @@
-import 'package:status_management_list/app/models/user_model.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
+import 'package:status_management_list/app/models/categories_model.dart';
 
-class UsersService {
-  Future<List<UsersModel>> fetchUsers() async {
-    List<UsersModel> users = [];
+class CategoriesService {
+  Future<List<CategoriesModel>> fetchCategories() async {
+    List<CategoriesModel> categories = [];
 
     await Parse().initialize(
       '12345678910SDFASDADS',
@@ -15,7 +15,7 @@ class UsersService {
 
     final queryBuilder = QueryBuilder<ParseObject>(
       ParseObject(
-        'User',
+        'Category',
       ),
     );
 
@@ -23,19 +23,19 @@ class UsersService {
       final response = await queryBuilder.query();
 
       if (response.success && response.results != null) {
-        for (final userObject in response.results!) {
-          final user = UsersModel.fromJson(userObject.toJson());
-          users.add(user);
+        for (final categoriesObject in response.results!) {
+          final category = CategoriesModel.fromJson(categoriesObject.toJson());
+          categories.add(category);
         }
       }
     } catch (e) {
-      print('Erro ao buscar os usuários: $e');
+      print('Erro ao buscar as categorias: $e');
     }
 
-    return users;
+    return categories;
   }
 
-  Future<bool> saveUser(UsersModel user) async {
+  Future<bool> saveCategory(CategoriesModel category) async {
     try {
       await Parse().initialize(
         '12345678910SDFASDADS',
@@ -45,17 +45,15 @@ class UsersService {
         coreStore: await CoreStoreSharedPrefsImp.getInstance(),
       );
 
-      final usersObject = ParseObject('User')
-        ..set('Name', user.name)
-        ..set('Profession', user.profession)
-        ..set('Email', user.email)
-        ..set('Birth', user.birth);
+      final categoriesObject = ParseObject('Category')
+        ..set('idCategoryTask', category.idCategoryTask)
+        ..set('Description', category.categoryDescription);
 
-      final response = await usersObject.save();
+      final response = await categoriesObject.save();
 
       return response.success;
     } catch (e) {
-      print('Erro ao salvar o usuário: $e');
+      print('Erro ao salvar a tarefa: $e');
       return false;
     }
   }
