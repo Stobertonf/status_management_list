@@ -28,7 +28,6 @@ class HomeController extends GetxController {
           snackPosition: SnackPosition.BOTTOM,
         );
       } catch (e) {
-        // Ocorreu um erro ao salvar a tarefa
         Get.snackbar(
           'Error',
           'Failed to save task.',
